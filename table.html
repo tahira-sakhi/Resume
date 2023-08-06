@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tables</title>
+</head>
+<body>
+    <h1>Personal Information:</h1>
+    <table border="1" id="dataTable">
+        <thead>
+            <tr>
+
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>DOB</th>
+                <th>Phone</th>
+                <th>Address</th>
+            
+               
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <div class ="1"  id="proImage">
+            <img
+              src=""
+              alt="profileImage"
+              id="imagee"
+              width="100px"
+              height="100px"
+            />
+          </div>
+    </table>
+    <!-- DEegreeees -->
+    <h1>Degrees:</h1>
+    <table border="2" id="degrees">
+        <thead>
+            <tr>
+               
+                <th>Degree </th>
+                <th>University </th>
+                <th> START_DATE </th>
+                <th>END_DATE </th>
+                <th>GPA_PERCENTAGE</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        </table>
+        <h1>Experiences:</h1>
+        <table border="3" id="experiences">
+            <thead>
+                <tr>
+                    <!-- <th>ID</th> -->
+                    <th>Company</th>
+                    <th>Position</th>
+                    <th> START_DATE </th>
+                    <th>END_DATE </th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <h1>Skills:</h1>
+         <table border="4" id="skills">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Skill</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    <!-- <script src="/table.js"></script> -->
+    <script>
+
+// =====================fetch= the data==================================
+
+
+        function fetchData() {
+            fetch('/showData') // Assuming this URL is correct and returns JSON data
+            .then(response => response.json())
+            .then((showData) => {
+          // Update the personal info table
+          const tableBody= document.getElementById("dataTable");
+          console.log(showData.image);
+          const row = tableBody.insertRow();
+          row.insertCell(0).textContent = showData.id;
+          row.insertCell(1).textContent = showData.name;
+          row.insertCell(2).textContent = showData.email;
+          row.insertCell(3).textContent = showData.DOB;
+          row.insertCell(4).textContent = showData.PHONE;
+          row.insertCell(5).textContent = showData.ADDRESS;
+
+          const proImage = document.getElementById("imagee");
+          
+          // Update the education table
+          console.log("image:", showData.image);
+          proImage.src = showData.image;
+          // console.log("profileImage:" + JSON.stringify(proImage));
+
+          const degreeTable = document.getElementById("degrees");
+           showData.degrees.forEach((degree, index) => {
+            const row = degreeTable.insertRow();
+            row.insertCell(0).textContent = index + 1;
+            row.insertCell(1).textContent = degree.degree;
+            row.insertCell(2).textContent = degree.university;
+            row.insertCell(3).textContent = degree.START_DATE;
+            row.insertCell(4).textContent = degree.END_DATE;
+            row.insertCell(6).textContent = degree.GPA_PERCENTAGE;
+});
+ 
+          const expTable = document.getElementById("experiences");
+           showData.experience.forEach((exp, index) => {
+            const row = expTable.insertRow();
+            row.insertCell(0).textContent = index + 1;
+            row.insertCell(1).textContent = exp.company;
+            row.insertCell(2).textContent = exp.position;
+            row.insertCell(3).textContent = exp.START_DATE;
+            row.insertCell(4).textContent = exp.END_DATE;
+            row.insertCell(2).textContent = exp.GPA_PERCENTAGE;
+});
+// Update the skill table
+        const skillTable = document.getElementById("Skills");
+          showData.skills.forEach((skill, index) => {
+            const row = skillTable.insertRow();
+            row.insertCell(0).textContent = index + 1;
+            row.insertCell(1).textContent = skill.skill;
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          // console.error("Error fetching resume data:", error);
+        });
+    } 
+
+
+    </script>
+</body>
+</html>
