@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Application</title>
+</head>
+<body>
+    <h1>Submit your Application</h1>
+    <hr>
+    <form action="action.html" method="post"></form>
+    <label for="applicatonnumber">Application Number</label>
+    <input type="text" name="applicationnumber" id="" value="1234" disabled> <br><br>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="" placeholder="Name" ><br><br>
+    <label for="age">Age</label>
+    <input type="number" name="age" id="" placeholder="Age"><br><br>
+    <label for="email">Email</label>
+    <input type="text" name="email" id="" placeholder="Email" required><br><br>
+    <label for="class">Class</label>
+    <input type="number" name="class" id="" value="" placeholder="1">
+    <label for="section">Section</label>
+    <select name="section" id="">
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+       </select> <br><br>
+    <label for="gender">Gender</label>
+        <input type="radio" name="gender" id="" value="female">Female
+        <input type="radio" name="gender" id="" value="male">Male
+        <br><br>
+        <fieldset>
+            <legend>hobby</legend>
+            <input type="checkbox" name="hobby" id="" value="Hiking">Hiking
+            <input type="checkbox" name="hobby" id="" value="Cooking">Cooking
+            <input type="checkbox" name="hobby" id="" value="Music">Music
+            <input type="checkbox" name="hobby" id="" value="Reading">Reading
+        </fieldset><br><br>
+
+    <label for="about me">About me </label>
+    <textarea name="about me" id="" cols="30" rows="10"></textarea><br><br>
+    <label for="photo">Photo</label>
+     <input type="file" name="photo" id=""><br><br>
+    
+     <label for="secret">Secret</label>
+     <input type="password" name="secret" id="">
+     <br><br>
+     <input type="submit" value="Submit">
+     <input type="reset" value="Reset" >
+</body>
+</html>
